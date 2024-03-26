@@ -4,21 +4,12 @@
 	import * as Form from '$lib/components/ui/form';
 	import { Input } from '$lib/components/ui/input';
 	import { Textarea } from '$lib/components/ui/textarea';
-	import { formProjectSchema } from '$lib/schemas/proejct.schema';
 	import { superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
 
 	let { data } = $props();
 	let showProjectForm = $state(false);
 
 	const form = superForm(data.form);
-
-	// const { form: formData, enhance } = form;
-	$inspect(showProjectForm).with((type, showProjectForm) => {
-		if (type === 'update') {
-			console.log(showProjectForm);
-		}
-	});
 
 	const { form: formData, enhance } = form;
 </script>

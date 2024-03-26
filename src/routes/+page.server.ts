@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types';
 import { getProjects, createProject } from '$lib/server/queries/project.query';
 import { superValidate } from 'sveltekit-superforms';
-import { formProjectSchema } from '$lib/schemas/proejct.schema';
+import { formProjectSchema } from '$lib/schemas/project.schema';
 import { zod } from 'sveltekit-superforms/adapters';
 import { message } from 'sveltekit-superforms';
 import { fail } from '@sveltejs/kit';

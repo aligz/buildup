@@ -1,4 +1,4 @@
-import { Surreal } from 'surrealdb.js';
+import { Surreal } from 'surrealdb.node';
 import {
 	DATABASE_URL,
 	DATABASE_PASSWORD,
@@ -52,16 +52,17 @@ const database = {
 					_db = new Surreal();
 
 					if (!DB_URL) return null;
-					await _db.connect(DB_URL, {
-						namespace: DATABASE_NAMESPACE,
-						database: DATABASE_NAME,
-						auth: {
-							namespace: DATABASE_NAMESPACE,
-							database: DATABASE_NAME,
-							username: DATABASE_USERNAME,
-							password: DATABASE_PASSWORD
-						}
+
+					await _db.connect('ws://127.0.0.1:8000');
+
+					// Signin as a namespace, database, or root user
+					await _db.signin({
+						username: 'root',
+						password: 'root'
 					});
+
+					// Select a specific namespace / database
+					await _db.use({ ns: 'projects', db: 'buildup' });
 				} catch (error) {
 					if (retries < MAX_RETRIES) {
 						retries++;

@@ -16,7 +16,7 @@ export const load = (async ({ params }) => {
 		});
 	}
 	return {
-		project: project.at(0),
+		project: project,
 		form: await superValidate(zod(formPageSchema))
 	};
 }) satisfies PageServerLoad;

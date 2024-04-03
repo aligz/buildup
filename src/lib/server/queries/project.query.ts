@@ -5,8 +5,9 @@ export const getProjects = async () => {
 };
 
 export const getProject = async (id: string) => {
-	await db.let('id', id);
-	const result = await db.query('SELECT *, ->pages->page.* as pages FROM $id');
+	const result = await db.query('SELECT *, ->pages->page.* as pages FROM $id', {
+		id
+	});
 	return result[0];
 };
 
